@@ -2,6 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/prisma/client";
 import { createIssueSchema } from "../../validationSchemas";
 
+// export async function GET(request: NextRequest) {
+//   const issues = prisma.issue.findMany();
+
+//   return NextResponse.json(issues, { status: 201 });
+// }
+
 export async function POST(request: NextRequest) {
   const body = await request.json();
   // validate body of request
