@@ -24,6 +24,7 @@ type IssueForm = z.infer<typeof createIssueSchema>;
 
 const NewIssuePage = () => {
   const router = useRouter();
+
   const {
     register,
     control,
@@ -40,7 +41,8 @@ const NewIssuePage = () => {
       setIsSubmitting(true);
       // use api to post data to db - returns the new issue object
       await axios.post("/api/issues", data);
-      // reroute user to issues page
+      // reroute user to issues page - not refreshing and showing updated issues list??
+      router.refresh();
       router.push("/issues");
     } catch (error) {
       setIsSubmitting(false);
