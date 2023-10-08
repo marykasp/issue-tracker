@@ -8,7 +8,6 @@ import classnames from "classnames";
 
 const Navbar = () => {
   const currentPath = usePathname();
-  console.log(currentPath);
 
   const links = [
     {
@@ -23,7 +22,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex space-x-6 border-b mb-5 px-5 h-14 items-center">
-      <Link href="/" className="text-red-500">
+      <Link href="/" className="text-red-500 text-lg">
         <AiFillBug />
       </Link>
       <ul className="flex space-x-6">
