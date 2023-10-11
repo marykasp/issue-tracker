@@ -44,9 +44,8 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
       if (issue) await axios.patch(`/api/issues/${issue.id}`, data);
       else await axios.post("/api/issues", data);
 
-      // reroute user to issues page - not refreshing and showing updated issues list??
-      router.refresh();
       router.push("/issues");
+      router.refresh(); // refresh the router cache of the current route (/issues route)
     } catch (error) {
       setIsSubmitting(false);
       setError("An unexpected error occurred.");

@@ -45,4 +45,8 @@ const Issues = async () => {
   );
 };
 
+// opt out of static rendering - issues page now renders dynamically
+export const dynamic = "force-dynamic";
+// export const revalidate = 0;
+
 export default Issues;
