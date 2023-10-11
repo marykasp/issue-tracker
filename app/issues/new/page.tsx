@@ -1,13 +1,7 @@
 "use client";
 
-import {
-  Text,
-  Button,
-  Callout,
-  TextField,
-  TextFieldInput,
-} from "@radix-ui/themes";
-import SimpleMDE from "react-simplemde-editor";
+import { Button, Callout, TextField, TextFieldInput } from "@radix-ui/themes";
+import dynamic from "next/dynamic";
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
@@ -18,6 +12,11 @@ import { createIssueSchema } from "../../validationSchemas";
 import { z } from "zod";
 import ErrorMessage from "../../components/ErrorMessage";
 import Spinner from "../../components/Spinner";
+
+// lazy loading
+const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
+  ssr: false,
+});
 
 // infer type of form using schema with zod
 type IssueForm = z.infer<typeof createIssueSchema>;
