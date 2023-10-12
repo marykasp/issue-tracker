@@ -5,19 +5,14 @@ import { Issue } from "@prisma/client";
 import { Button, Callout, TextField, TextFieldInput } from "@radix-ui/themes";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import SimpleMDE from "react-simplemde-editor";
 import { z } from "zod";
 import ErrorMessage from "../../components/ErrorMessage";
 import Spinner from "../../components/Spinner";
 import { issueSchema } from "../../validationSchemas";
-
-// lazy loading
-const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
-  ssr: false,
-});
 
 // infer type of form using schema with zod
 type IssueFormData = z.infer<typeof issueSchema>;
