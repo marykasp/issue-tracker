@@ -7,7 +7,9 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger>
-        <Button color="red">Delete Issue</Button>
+        <Button color="red" className="cursor-pointer">
+          Delete Issue
+        </Button>
       </AlertDialog.Trigger>
       <AlertDialog.Content>
         <AlertDialog.Title>Confirm Deletion</AlertDialog.Title>
@@ -22,7 +24,9 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
             </Button>
           </AlertDialog.Cancel>
           <AlertDialog.Action>
-            <Button color="red">Confirm</Button>
+            <Button color="red" className="cursor-pointer">
+              Confirm
+            </Button>
           </AlertDialog.Action>
         </Flex>
       </AlertDialog.Content>
