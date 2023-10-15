@@ -20,6 +20,9 @@ const Issues = async () => {
             <Table.ColumnHeaderCell className="hidden md:table-cell">
               Created
             </Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="hidden md:table-cell">
+              Assigned User
+            </Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -36,6 +39,9 @@ const Issues = async () => {
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
                 {issue.createdAt.toDateString()}
+              </Table.Cell>
+              <Table.Cell className="hidden md:table-cell">
+                {issue.assignedToUserId}
               </Table.Cell>
             </Table.Row>
           ))}
