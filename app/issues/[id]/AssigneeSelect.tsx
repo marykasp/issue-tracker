@@ -14,7 +14,7 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
 
   if (error) return null;
 
-  const assignIssue = (userId: string) => {
+  const assignIssue = async (userId: string) => {
     axios
       .patch("/api/issues/" + issue.id, {
         assignedToUserId: userId || null,
@@ -34,7 +34,7 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
         <Select.Content>
           <Select.Group>
             <Select.Label>Suggestions</Select.Label>
-            <Select.Item defaultValue="">Unassigned</Select.Item>
+            <Select.Item defaultValue=" ">Unassigned</Select.Item>
             {users?.map((user) => (
               <Select.Item key={user.id} value={user.id}>
                 {user.name}
