@@ -21,7 +21,6 @@ const IssueDetailPage = async ({ params }: Props) => {
 
   if (!issue) return notFound();
 
-  // radix ui (md is for laptop while lg on tailwind)
   return (
     <Grid columns={{ initial: "1", sm: "5" }} gap="5">
       <Box className="md:col-span-4">
