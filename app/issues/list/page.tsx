@@ -5,9 +5,10 @@ import NextLink from "next/link";
 import IssueActions from "./IssueActions";
 import { Issue, Status, User } from "@prisma/client";
 import { ArrowUpIcon } from "@radix-ui/react-icons";
+import Pagination from "../../components/Pagination";
 
 interface Props {
-  searchParams: { status: Status; orderBy: keyof Issue };
+  searchParams: { status: Status; orderBy: keyof Issue; page: string };
 }
 
 const Issues = async ({ searchParams }: Props) => {
@@ -22,19 +23,28 @@ const Issues = async ({ searchParams }: Props) => {
     ? searchParams.status
     : undefined;
 
+  const where = { status };
+
   const orderBy = columns
     .map((column) => column.value)
     .includes(searchParams.orderBy)
     ? { [searchParams.orderBy]: "asc" }
     : undefined;
 
+  const page = parseInt(searchParams.page) || 1;
+  const pageSize = 10;
+
   // fetch issues from database - filter based on query params
   const issues = await prisma.issue.findMany({
-    where: {
-      status: status,
-    },
+    where,
     orderBy,
+    skip: (page - 1) * pageSize,
+    // number of records to fetch
+    take: pageSize,
   });
+
+  // retrieve the total number of issues
+  const issueCount = await prisma.issue.count({ where });
 
   return (
     <div>
@@ -76,13 +86,15 @@ const Issues = async ({ searchParams }: Props) => {
               <Table.Cell className="hidden md:table-cell">
                 {issue.createdAt.toDateString()}
               </Table.Cell>
-              {/* <Table.Cell className="hidden md:table-cell">
-                {issue.assignedToUserId || null}
-              </Table.Cell> */}
             </Table.Row>
           ))}
         </Table.Body>
       </Table.Root>
+      <Pagination
+        pageSize={pageSize}
+        currentPage={page}
+        itemCount={issueCount}
+      />
     </div>
   );
 };
