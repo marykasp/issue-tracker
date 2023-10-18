@@ -57,7 +57,7 @@ const NavLinks = () => {
               href={link.href}
               className={classnames({
                 "nav-link": true,
-                "!text-zinc-900": link.href === currentPath,
+                "!text-zinc-900 font-semibold": link.href === currentPath,
               })}
             >
               {link.label}

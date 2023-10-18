@@ -18,6 +18,6 @@ body {
 
 @layer utilities {
   .nav-link {
-    @apply text-zinc-500 hover:text-zinc-800;
+    @apply text-zinc-500 hover:text-zinc-800 hover:font-semibold;
   }
 }
