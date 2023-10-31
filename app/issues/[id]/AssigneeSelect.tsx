@@ -34,7 +34,9 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
         <Select.Content>
           <Select.Group>
             <Select.Label>Suggestions</Select.Label>
-            <Select.Item defaultValue=" ">Unassigned</Select.Item>
+            <Select.Item defaultValue=" " value="">
+              Unassigned
+            </Select.Item>
             {users?.map((user) => (
               <Select.Item key={user.id} value={user.id}>
                 {user.name}
